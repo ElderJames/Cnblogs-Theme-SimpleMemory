@@ -101,7 +101,7 @@ function Base() {
         document.getElementsByTagName("head")[0].appendChild(linkObject);
 
         // 添加网站PV量监控
-        if (window.location.href.search("www.cnblogs.com/bndong") != -1 ) {bndongJs.addWebPv();} else {bndongJs.setTheme();}
+        if (window.location.href.search("www.cnblogs.com/ElderJames") != -1 ) {bndongJs.addWebPv();} else {bndongJs.setTheme();}
 
         // 设置菜单侧边栏内容
         setMenuDataTId = window.setInterval( bndongJs.setMenuData, 1000 );
@@ -145,7 +145,7 @@ function Base() {
             if (document[hidden]) {
                 $('#myTopCanvas').hide();
                 var str = $('.main-header-content h1').eq(0).text();
-                document.title = ' (◍´꒳`◍) Hi, ' + (str != '' ? str : 'BNDong') + ' - ' + RelTitle.split(' - ')[0];
+                document.title = ' (◍´꒳`◍) Hi, ' + (str != '' ? str : 'ElderJames') + ' - ' + RelTitle.split(' - ')[0];
             } else {
                 $('#myTopCanvas').fadeIn(3000);
                 document.title = RelTitle;

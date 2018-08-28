@@ -25,30 +25,39 @@ jQuery.fn.wait = function (func, times, interval) {
     return this;
 }
 
-function focusFunction(){
-    var _targetTop = $('#comment_form_container').offset().top;//获取位置
-    jQuery("html,body").animate({scrollTop:_targetTop},300);//跳转
+function focusFunction() {
+    var _targetTop = $('#comment_form_container').offset().top; //获取位置
+    jQuery("html,body").animate({
+        scrollTop: _targetTop
+    }, 300); //跳转
 }
 
-function focusFollow(){
-    var _targetTop = $('#profile_block').offset().top;//获取位置
-    jQuery("html,body").animate({scrollTop:_targetTop},300);//跳转
+function focusFollow() {
+    var _targetTop = $('#profile_block').offset().top; //获取位置
+    jQuery("html,body").animate({
+        scrollTop: _targetTop
+    }, 300); //跳转
 }
 
-$(document).ready(function(){
-    $("<div id='toTop'style='zoom:0;'></div>").appendTo($("body")).bind("click", function(){
-        $("body,html").animate({ scrollTop: 0 }, 150);
+$(document).ready(function () {
+    $("<div id='toTop'style='zoom:0;'></div>").appendTo($("body")).bind("click", function () {
+        $("body,html").animate({
+            scrollTop: 0
+        }, 150);
     });
 
-    $('#cnblogs_post_body pre').find('>code').parent().css({'border':'dashed 1px #aaa','border-left':'solid 2px #6CE26C'});
+    $('#cnblogs_post_body pre').find('>code').parent().css({
+        'border': 'dashed 1px #aaa',
+        'border-left': 'solid 2px #6CE26C'
+    });
     var url = window.location.href; // 获取完整URL地址
-    var tmp = new Array();          // 临时变量，用于保存分割字符串
-    tmp = url.split("/");           // 按照"/"分割
-    var cc = tmp[tmp.length-1];     // 获取最后一部分，即文件名和参数
+    var tmp = new Array(); // 临时变量，用于保存分割字符串
+    tmp = url.split("/"); // 按照"/"分割
+    var cc = tmp[tmp.length - 1]; // 获取最后一部分，即文件名和参数
     cc = cc.split("#")[0];
-    var fileid = cc.split("?");            // 把参数和文件名分割开
+    var fileid = cc.split("?"); // 把参数和文件名分割开
     var uid = fileid[0].replace('.html', '');
-    var bottom_html = '<br><p style="padding-top: 0; padding-right: 10px; padding-bottom: 10px; padding-left: 70px; background: url(https://files.cnblogs.com/files/bndong/cat.gif) #f7f7f7 no-repeat 12.5px 50%; font-family: 微软雅黑; font-size: 12px; border: #e0e0e0 1px dashed;">';
+    var bottom_html = '<br><p style="padding-top: 0; padding-right: 10px; padding-bottom: 10px; padding-left: 70px; background: url(https://files.cnblogs.com/files/elderjames/cat.gif) #f7f7f7 no-repeat 12.5px 50%; font-family: 微软雅黑; font-size: 12px; border: #e0e0e0 1px dashed;">';
     bottom_html += '<br>';
     bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">作　　者</span>：<strong><span style="font-size: 12px; color: red;">';
     var articleAuthor = $('#articleAuthor').val();
@@ -56,27 +65,27 @@ $(document).ready(function(){
 
     // 设置作者和出处
     if (articleAuthor != undefined && articleSource != undefined) {
-        bottom_html += '<a href="'+articleSource+'" target="_blank">'+articleAuthor+'</a></span></strong> <br>';
-        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="'+articleSource+'" target="_blank">'+articleSource+'</a>';
-    } else if ( window.location.href.search("www.cnblogs.com/bndong") != -1 ) {
-        bottom_html += '<a href="http://www.cnblogs.com/bndong/" target="_blank">BNDong</a></span></strong> <br>';
-        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="http://www.cnblogs.com/bndong/" target="_blank">http://www.cnblogs.com/bndong/</a>';
+        bottom_html += '<a href="' + articleSource + '" target="_blank">' + articleAuthor + '</a></span></strong> <br>';
+        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="' + articleSource + '" target="_blank">' + articleSource + '</a>';
+    } else if (window.location.href.search("www.cnblogs.com/elderjames") != -1) {
+        bottom_html += '<a href="http://www.cnblogs.com/elderjames/" target="_blank">ElderJames</a></span></strong> <br>';
+        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="http://www.cnblogs.com/elderjames/" target="_blank">http://www.cnblogs.com/elderjames/</a>';
     } else {
         var str = $('.main-header-content h1').eq(0).text();
         var homeUrl = tmp;
         homeUrl.pop();
         homeUrl.pop();
         homeUrl = homeUrl.join("/");
-        bottom_html += '<a href="'+homeUrl+'" target="_blank">'+ (str != '' ? str : tmp[3]) +'</a></span></strong><br>';
-        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="'+url+'" target="_blank">'+url+'</a>';
+        bottom_html += '<a href="' + homeUrl + '" target="_blank">' + (str != '' ? str : tmp[3]) + '</a></span></strong><br>';
+        bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">出　　处</span>：<a href="' + url + '" target="_blank">' + url + '</a>';
     }
 
     bottom_html += '<br>';
-    bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">关于博主</span>：编程路上的小学生。所有评论和私信都会在第一时间回复。也欢迎园子的大大们指正错误，共同进步。或者<a href="http://msg.cnblogs.com/msg/send/'+tmp[3]+'" target="_blank">直接私信</a>我。';
+    bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">关于博主</span>：编程路上的小学生。所有评论和私信都会在第一时间回复。也欢迎园子的大大们指正错误，共同进步。或者<a href="http://msg.cnblogs.com/msg/send/' + tmp[3] + '" target="_blank">直接私信</a>我。';
     bottom_html += '<br>';
     bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">版权声明</span>：以商业目的使用需获原作者许可。非商业目的使用授权遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>。';
     bottom_html += '<br>';
-    bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">声援博主</span>：如果您觉得文章对您有帮助，可以点击文章右下角<strong><span style="color: #ff0000; font-size: 12pt;">【<a id="post-up" onclick="votePost('+uid+',\'Digg\')" href="javascript:void(0);">推荐</a>】</span></strong>一下。您的鼓励是博主的最大动力！';
+    bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">声援博主</span>：如果您觉得文章对您有帮助，可以点击文章右下角<strong><span style="color: #ff0000; font-size: 12pt;">【<a id="post-up" onclick="votePost(' + uid + ',\'Digg\')" href="javascript:void(0);">推荐</a>】</span></strong>一下。您的鼓励是博主的最大动力！';
     bottom_html += '<br>';
     bottom_html += '</p>';
     $("#cnblogs_post_body").append(bottom_html);
