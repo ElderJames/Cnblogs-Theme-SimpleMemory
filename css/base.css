@@ -3989,6 +3989,10 @@ a#green_channel_wechat {
     margin-right: 7px;
 }
 
+#author_profile,#div_digg,#topics .postDesc,#comment_nav{
+    display:none!important;
+}
+
 /* ==========================================================================
    Media Queries - Smaller than 768px
    ========================================================================== */
