@@ -110,7 +110,6 @@ function Base() {
         document.getElementsByTagName("head")[0].appendChild(linkObject);
 
         // 添加网站PV量监控
-        if (window.location.href.search("www.cnblogs.com/ElderJames") != -1 ) {bndongJs.addWebPv();} else {bndongJs.setTheme();}
         bndongJs.addWebPv();
 
         // 设置菜单侧边栏内容

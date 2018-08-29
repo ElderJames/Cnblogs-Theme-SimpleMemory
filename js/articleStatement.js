@@ -57,7 +57,7 @@ $(document).ready(function () {
     cc = cc.split("#")[0];
     var fileid = cc.split("?"); // 把参数和文件名分割开
     var uid = fileid[0].replace('.html', '');
-    var bottom_html = '<br><p style="padding-top: 0; padding-right: 10px; padding-bottom: 10px; padding-left: 70px; background: url(https://files.cnblogs.com/files/bndong/cat.gif) #f7f7f7 no-repeat 12.5px 50%; font-family: 微软雅黑; font-size: 12px; border: #e0e0e0 1px dashed;">';
+    var bottom_html = '<br><p style="padding-top: 0; padding-right: 10px; padding-bottom: 10px; padding-left: 70px; background: url(https://files.cnblogs.com/files/elderjames/cat.gif) #f7f7f7 no-repeat 12.5px 50%; font-family: 微软雅黑; font-size: 12px; border: #e0e0e0 1px dashed;">';
     bottom_html += '<br>';
     bottom_html += '<span style="font-weight: bold;color: #333; white-space:nowrap;">作　　者</span>：<strong><span style="font-size: 12px; color: red;">';
     var articleAuthor = $('#articleAuthor').val();
