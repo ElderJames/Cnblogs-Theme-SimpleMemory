@@ -10,7 +10,7 @@
                         <img src="https://pic.cnblogs.com/avatar/1065454/20161119225202.png">
                     </div>
                 </div>
-                <div id="introduce"></div>
+                <div id="introduce">开源爱好者，有只叫巴克比克的猫~欢迎在Github跟我互动！</div>
             </div>
 
             <!-- 导航 -->
@@ -45,8 +45,9 @@
         </nav>
         <button class="close-button" id="close-button">Close Menu</button>
         <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
-                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800"
+                preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z" />
             </svg>
         </div>
     </div>
@@ -74,17 +75,18 @@
 
 <!-- global var -->
 <script type="text/javascript">
-
     // start cache
-    $.ajaxSetup({cache: true});
+    $.ajaxSetup({
+        cache: true
+    });
 
     /**
      * source:"github" versions 处为GitHub提交版本哈希值 根据版本加载代码 https://github.com/BNDong/Cnblogs-Theme-SimpleMemory/commits/master
      * source:"cnblogs" 从博客园文件加载代码，可以不配置版本号，本人博客园文件不会更新了（操作实在太麻烦了），如有需求可以从github上挡下来最新代码，保存到自己的博客园文件中进行加载
      */
     var staticFileSetting = {
-        source   : 'github',
-        versions : '3cdea59cc91b3d268e2656976bb14b0f9d3475ec', // 版本号
+        source: 'github',
+        versions: '3cdea59cc91b3d268e2656976bb14b0f9d3475ec', // 版本号
     };
 
     // load loadingJs
@@ -108,9 +110,9 @@
                     'main4',
                     'tools',
                 ];
-                require(staticResource, function() {
+                require(staticResource, function () {
 
-                    require(['base'], function() {
+                    require(['base'], function () {
 
                         var base = new Base;
                         base.init();
@@ -134,15 +136,17 @@
         switch (staticFileSetting.source) {
 
             case 'github': // 注意：此处为GitHub加载源，如果需要加载自己分支的代码，修改此处URL，URL规则详见：https://www.jsdelivr.com/
-                return 'https://cdn.jsdelivr.net/gh/ElderJames/Cnblogs-Theme-SimpleMemory@'+staticFileSetting.versions+'/' + (file ? file : '');
+                return 'https://cdn.jsdelivr.net/gh/ElderJames/Cnblogs-Theme-SimpleMemory@' + staticFileSetting.versions +
+                    '/' + (file ? file : '');
                 break;
 
             case 'cnblogs': // 注意：此处为博客园加载源，加载本人博客文件为老版本。本人博客园文件停止更新，如果需要可以修改至自己博客园文件
-                return 'https://blog-static.cnblogs.com/files/ElderJames/'+file;
+                return 'https://blog-static.cnblogs.com/files/ElderJames/' + file;
                 break;
 
             default:
-                return '';break;
+                return '';
+                break;
         }
     }
 
@@ -155,11 +159,11 @@
     function setFileNameMin(file, directory) {
         if (typeof file == 'undefined') return '';
 
-        var suffix  = null;
+        var suffix = null;
         var fileArr = file.split('.');
 
-        if (fileArr.length > 0 && $.inArray(fileArr[(fileArr.length -1)], ['js', 'css']) != -1) {
-            suffix    = fileArr.pop();
+        if (fileArr.length > 0 && $.inArray(fileArr[(fileArr.length - 1)], ['js', 'css']) != -1) {
+            suffix = fileArr.pop();
             directory = suffix;
         }
 
@@ -180,8 +184,10 @@
                 break;
 
             default:
-                return file;break;
+                return file;
+                break;
         }
     }
+
 </script>
 <!-- global var end -->
