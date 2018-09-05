@@ -1,3 +1,9 @@
+/*!
+ * DATE: 2018-03-13
+ * UPDATES AND DOCS AT: https://github.com/BNDong
+ * https://www.cnblogs.com/bndong/
+ * @author: BNDong, dbnuo@foxmail.com
+ **/
 function Base() {
     var bndongJs     = this
 
@@ -17,7 +23,7 @@ function Base() {
         ,setCnzzTId      = ''          // 网站统计Cnzz设置定时器ID
         ,setAmazingTId   = ''          // 网站统计Amazing设置定时器ID
         ,setCatalogTId   = ''          // 文章目录设置定时器ID
-
+        
     ;
 
     /**
@@ -149,7 +155,9 @@ function Base() {
     this.htmlTitle = function() {
         var RelTitle = document.title;
         var hidden,
-            visibilityChange;
+            visibilityChange,
+            timer;
+        
         if (typeof document.hidden !== "undefined") {
             hidden = "hidden";
             visibilityChange = "visibilitychange";
@@ -162,13 +170,19 @@ function Base() {
         }
 
         function handleVisibilityChange() {
+            if (timer) clearTimeout(timer);
             if (document[hidden]) {
                 $('#myTopCanvas').hide();
                 var str = $('.main-header-content h1').eq(0).text();
-                document.title = ' (◍´꒳`◍) Hi, ' + (str != '' ? str : 'ElderJames') + ' - ' + RelTitle.split(' - ')[0];
+                timer = setTimeout(function () {
+                    document.title = ' (◍´꒳`◍) Hi, ' + (str != '' ? str : 'BNDong') + ' - ' + RelTitle.split(' - ')[0];
+                }, 1000);
             } else {
+                document.title = '(*´∇｀*) 欢迎回来！';
+                timer = setTimeout(function () {
+                    document.title = RelTitle;
+                }, 1000);
                 $('#myTopCanvas').fadeIn(3000);
-                document.title = RelTitle;
             }
         }
         if (typeof document.addEventListener !== "undefined" || typeof document[hidden] !== "undefined") {
@@ -546,7 +560,7 @@ function Base() {
     this.addWebPv = function() {
         var pvHtml =  '<i class="iconfont icon-odps-data cnzz" style="position: relative;top: 2px;left: 3px;cursor: pointer;"></i>';
         pvHtml += '<span id="amazingStatSpan"></span>';
-        pvHtml += '<div>【事实并非理所当然🌈世界总是欲盖弥彰】</div>';
+        pvHtml += '<div>【事实并非理所当然<span id="footerTextIcon">❤️</span>世界总是欲盖弥彰】</div>';
         pvHtml += "<div><span id='blogRunTimeSpan'></span><span class='my-face'>ღゝ◡╹)ノ♡</span></div>";
         pvHtml += '<div id="cnzzInfo"></div>';
         $('#footer').append(pvHtml);
@@ -562,7 +576,7 @@ function Base() {
     };
     this.setRunTime = function () {
         var str = $('#blogStartTimeInput').val();
-        str = str != '' ? str : '2016-11-19';
+        str = str ? str : '2016-11-17';
         var runDate = tools.getRunDate(str);
         $('#blogRunTimeSpan').text('This blog has running : '+runDate.daysold+' d '+runDate.hrsold+' h '+runDate.minsold+' m '+runDate.seconds+' s');
     };
